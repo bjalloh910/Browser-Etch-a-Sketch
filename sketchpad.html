@@ -5,7 +5,68 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <h2>Just commiting</h2>
-        <script></script>
+        <div id="display">
+            <div class="btnBox">
+                <h1>Sketch Pad</h1>
+                <button class="btn">Click me</button>
+            </div>
+            <h3 id="displayInput"></h3>
+            <div class="orignGrid">
+                <div class="grid"></div>
+            </div>
+        </div>
+        
+        <script>
+            const grid = document.querySelector('.grid'); 
+            
+            for( let cols=0; cols<16; cols++){
+                for( let rows=0; rows<16; rows++){
+                   console.log("THESE COLS: " + " " + cols + " " + "THESE ROWS " + " " + rows);
+                   const box = document.createElement('div');
+                   box.classList.add('box');
+                   grid.appendChild(box);
+                   box.addEventListener('mouseenter', e => {
+                    box.style.background = 'red';
+                   })
+                }
+            }
+
+            const button = document.querySelector('.btn'); 
+            button.addEventListener('click', e=> {
+                const userInput = prompt("Please provide 2 numbers representing the amount of rows & and columns to display a new grid. Separate the 2 numbers by commas. Ex: 5,7. Your limit is 100.");
+
+                console.log( userInput);
+                if(userInput !== null){
+                    displayInput.textContent = "Displaying a: " + userInput + " grid: ";
+                    const arrayInput = userInput.split(',');
+                    if( arrayInput.length === 2){
+                       grid.textContent = ' ';
+                       const userCols = parseInt(arrayInput[0]);
+                       const userRows = parseInt(arrayInput[1]);
+
+                        const gridTemplateColumns = `repeat(${userCols}, 50px)`;
+                        const gridTemplateRows = `repeat(${userRows}, 50px)`;
+                        grid.style.setProperty('grid-template-columns', gridTemplateColumns);
+                        grid.style.setProperty('grid-template-rows', gridTemplateRows);
+                        
+
+                        for(let createCols=0; createCols<userCols; createCols++){
+                        for(let createRows=0; createRows<userRows; createRows++){
+                            const userGrid = document.createElement('div');
+                            userGrid.classList.add('usergrid');
+                            userGrid.gridTemplateColumns = createCols;
+                            userGrid.gridTemplateRows = createRows;
+                            grid.appendChild(userGrid);
+                            userGrid.addEventListener('mouseenter', e => {
+                            userGrid.style.background = 'pink';
+                            })
+                        }
+                       }
+                    } else {
+                    console.log("Enter 2 numbers seperated by commas.")
+                }
+            }
+        })
+        </script>
     </body>
 </html>

@@ -1,0 +1,44 @@
+#display{
+   background: rgb(218, 159, 159);
+   padding: 60px;
+   margin: 80px;
+}
+.orignGrid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(16, 50px);
+    grid-template-rows: repeat(16, 50px);
+    border: 2px solid pink;
+    max-width: 800px;
+}
+.box{
+    background: pink;
+    border: 2px solid yellow;
+}
+.btnBox{
+    text-align: center;
+}
+.btnBox h1{
+    font-size: 50px;
+    color: rgb(235, 81, 107);
+}
+.btn{
+    min-width: 200px;
+    max-height: 200px;
+    border-radius: 20px;
+    border: 2px solid rgb(228, 170, 179);
+    background: pink;
+    padding: 10px;
+    font-size: 20px;
+}
+.usergrid{
+    display: grid;
+    gap: 5px;
+    background: rgb(72, 72, 214);
+    border: 2px solid rgb(249, 249, 144);
+}
+
